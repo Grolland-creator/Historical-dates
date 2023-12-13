@@ -1,0 +1,394 @@
+$blackColor: #42567a;
+$blackColorWithOpacity: #42567a84;
+.block {
+    max-width: 1440px;
+    width: 100%;
+    border-left: 1px solid rgba(66, 86, 122, 0.2);
+    border-right: 1px solid rgba(66, 86, 122, 0.2);
+    margin: 0 auto;
+    padding: 170px 80px 104px;
+    position: relative;
+    @media (max-width: 1100px) {
+        border-left: 0px solid rgba(66, 86, 122, 0.2);
+        border-right: 0px solid rgba(66, 86, 122, 0.2);
+        padding: 59px 40px 13px;
+    }
+    @media (max-width: 600px) {
+        padding: 59px 20px 13px;
+    }
+    .title {
+        max-width: 360px;
+        color: $blackColor;
+        font-family: PT Sans;
+        font-size: 56px;
+        font-weight: 700;
+        line-height: 120%;
+        position: relative;
+        margin-bottom: 393px;
+        @media (max-width: 1100px) {
+            font-size: 40px;
+            margin-bottom: 250px;
+            max-width: 250px;
+            &:before {
+                display: none;
+            }
+        }
+        @media (max-width: 600px) {
+            font-size: 20px;
+            margin-bottom: 185px;
+            max-width: 123px;
+        }
+        &::before {
+            content: "";
+            height: 85%;
+            position: absolute;
+            width: 5px;
+            top: 10%;
+            left: -80px;
+            background: linear-gradient(#3877ee, #ef5da8);
+        }
+    }
+}
+
+.blockMain {
+    padding-bottom: 56px;
+    @media (max-width: 1100px) {
+        padding-bottom: 0;
+    }
+    .circle {
+        position: absolute;
+        z-index: 10;
+        top: 215px;
+        width: 530px;
+        height: 530px;
+        border-radius: 530px;
+        border: 1px solid rgba(66, 86, 122, 0.2);
+        left: 50%;
+        transform: translate(-50%);
+        @media (max-width: 1100px) {
+            display: none;
+        }
+        .dates {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+            .date {
+                transition: all 0.5s ease 0s;
+                position: absolute;
+                top: 26px;
+                left: 140px;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background-color: $blackColor;
+                transform-origin: 124px 238px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transform: rotate(0deg);
+                .dateBlock {
+                    width: 6px;
+                    height: 6px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: $blackColor;
+                    border-radius: 50%;
+                    position: absolute;
+                    cursor: pointer;
+                    transition:
+                        width 0.3s ease 0s,
+                        height 0.3s ease 0s,
+                        background-color 0.3s ease 0s,
+                        border-width 0.3s ease 0s;
+                    &:hover {
+                        width: 53px;
+                        height: 53px;
+                        background-color: #fff;
+                        border: 1px solid $blackColorWithOpacity;
+                        border-radius: 50%;
+                        .number {
+                            opacity: 1;
+                        }
+                    }
+                    &.activeDate {
+                        animation: date 0.4s linear 1 forwards;
+                        .number {
+                            animation: numberDate 0.4s linear 1 forwards;
+                        }
+                        .text {
+                            animation: textDate 0.2s linear 1 0.7s forwards;
+                        }
+                    }
+                }
+                .number {
+                    color: $blackColor;
+                    font-family: "PT Sans";
+                    font-size: 20px;
+                    font-weight: 400;
+                    line-height: 30px; /* 150% */
+                    width: 56px;
+                    height: 56px;
+                    position: absolute;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    opacity: 0;
+                    transition: all 0.2s ease 0s;
+                }
+                .text {
+                    color: $blackColor;
+                    font-family: "PT Sans";
+                    font-size: 20px;
+                    font-weight: 700;
+                    line-height: 30px; /* 150% */
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(0, -50%);
+                    left: 47px;
+                    opacity: 0;
+                    transition: all 0.2s ease 0s;
+                }
+            }
+        }
+    }
+    .numberDates {
+        text-align: center;
+        font-family: "PT Sans";
+        font-size: 200px;
+        font-weight: 700;
+        line-height: 80%; /* 80% */
+        letter-spacing: -4px;
+        position: absolute;
+        top: 400px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        pointer-events: none;
+        @media (max-width: 1100px) {
+            top: 220px;
+            font-size: 100px;
+            letter-spacing: -2px;
+        }
+        @media (max-width: 600px) {
+            top: 163px;
+            font-size: 56px;
+            letter-spacing: -1px;
+        }
+    }
+}
+.navigation {
+    .navigationText {
+        color: $blackColor;
+        font-family: "PT Sans";
+        font-size: 14px;
+        font-weight: 400;
+        padding-bottom: 20px;
+        @media (max-width: 600px) {
+            padding-bottom: 10px;
+        }
+    }
+    .arrows {
+        display: flex;
+        gap: 20px;
+        @media (max-width: 600px) {
+            gap: 8px;
+        }
+        .arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid $blackColorWithOpacity;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @media (max-width: 600px) {
+                width: 25px;
+                height: 25px;
+            }
+            &:first-child {
+                transform: rotate(180deg);
+            }
+            &[disabled] {
+                cursor: not-allowed;
+                opacity: 0.5;
+            }
+            img {
+                width: 24px;
+                height: 24px;
+                color: $blackColor;
+                opacity: 1;
+                @media (max-width: 600px) {
+                    width: 12px;
+                    height: 12px;
+                }
+            }
+        }
+    }
+}
+.NavAndPag {
+    display: flex;
+    gap: 38px;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+.pagination {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 9px;
+    .dot {
+        width: 6px;
+        height: 6px;
+        opacity: 0.4;
+        border-radius: 50%;
+        background-color: $blackColor;
+        &.active {
+            opacity: 1;
+        }
+    }
+}
+.blockDates {
+    width: calc(100% + 100px);
+    position: relative;
+    left: -50px;
+    @media (max-width: 1100px) {
+        padding-bottom: 78px;
+        left: 0;
+        width: 100%;
+    }
+    @media (max-width: 600px) {
+        width: calc(100% + 20px);
+    }
+    .filler {
+        width: 50px;
+        height: 100%;
+        background-color: #f4f5f9;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        @media (max-width: 1100px) {
+            display: none;
+        }
+    }
+    .date {
+        max-width: 400px;
+        @media (max-width: 1100px) {
+            max-width: 250px;
+        }
+        @media (max-width: 600px) {
+            max-width: 166px;
+        }
+        .year {
+            color: #3877ee;
+            font-family: "Bebas Neue";
+            font-size: 25px;
+            line-height: 120%; /* 30px */
+            text-transform: uppercase;
+            padding-bottom: 15px;
+            @media (max-width: 1100px) {
+                font-size: 20px;
+            }
+            @media (max-width: 600px) {
+                font-size: 16px;
+            }
+        }
+
+        .text {
+            color: $blackColor;
+            font-family: "PT Sans";
+            font-size: 20px;
+            line-height: 150%;
+            @media (max-width: 1100px) {
+                font-size: 16px;
+            }
+            @media (max-width: 600px) {
+                font-size: 14px;
+                line-height: 145%;
+            }
+        }
+    }
+}
+
+@keyframes date {
+    from {
+        width: 6px;
+        height: 6px;
+        background-color: $blackColor;
+        border: 0px solid $blackColorWithOpacity;
+    }
+    to {
+        width: 53px;
+        height: 53px;
+        background-color: #fff;
+        border: 1px solid $blackColorWithOpacity;
+    }
+}
+@keyframes numberDate {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes textDate {
+    from {
+        opacity: 0;
+        left: 73px;
+    }
+    to {
+        opacity: 1;
+        left: 73px;
+    }
+}
+
+.line1 {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    left: 50%;
+    background-color: rgba(66, 86, 122, 0.2);
+    top: 0;
+    @media (max-width: 1100px) {
+        display: none;
+    }
+}
+.line2 {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    background-color: rgba(66, 86, 122, 0.2);
+    top: 480px;
+    @media (max-width: 1100px) {
+        display: none;
+    }
+}
+
+.lineAndName {
+    position: relative;
+    .name {
+        font-size: 30px;
+        color: $blackColor;
+        font-family: PT Sans;
+        font-weight: 700;
+        padding-bottom: 30px;
+        @media (max-width: 600px) {
+            font-size: 16px;
+        }
+    }
+    .line {
+        width: 100%;
+        height: 1px;
+        background-color: rgba(66, 86, 122, 0.2);
+        margin-bottom: 50px;
+        @media (max-width: 600px) {
+            margin-bottom: 20px;
+        }
+    }
+}

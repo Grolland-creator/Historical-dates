@@ -1,0 +1,12 @@
+.year {
+    &:first-child {
+        color: #5d5fef;
+        padding-right: 90px;
+        @media (max-width: 1100px) {
+            padding-right: 30px;
+        }
+    }
+    &:last-child {
+        color: #ef5da8;
+    }
+}

@@ -1,0 +1,67 @@
+.swiper-slide {
+    width: fit-content;
+    height: fit-content;
+}
+
+.swiper-button-disabled {
+    display: none !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    z-index: 101;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0px 0px 15px rgba(56, 119, 238, 0.1));
+    @media (max-width: 1100px) {
+        display: none;
+    }
+    &::before {
+        content: "";
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        z-index: 10;
+        background: url("../../../public/icons/arrowBlue.png") center/9px 14px no-repeat;
+    }
+    &::after {
+        content: "";
+        display: none;
+    }
+}
+.swiper-button-prev {
+    transform: rotate(180deg);
+    left: 0px !important;
+}
+.swiper-button-next {
+    right: 0px !important;
+}
+
+.swiper {
+    @media (min-width: 1101px) {
+        left: -25px;
+        width: calc(100% - 50px);
+        margin-right: 50px;
+        position: static;
+    }
+}
+.swiper-wrapper {
+    @media (min-width: 1101px) {
+        padding-left: 50px;
+        position: static;
+    }
+}
+
+@media (max-width: 400px) {
+    .swiper-slide {
+        opacity: 0.4;
+    }
+    .swiper-slide-active {
+        opacity: 1;
+    }
+}
